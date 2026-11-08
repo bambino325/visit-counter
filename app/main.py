@@ -6,7 +6,6 @@ import sys
 import redis
 from flask import Flask, jsonify, request
 
-
 logger = logging.getLogger("visit_counter")
 logger.setLevel(logging.INFO)
 
@@ -38,7 +37,8 @@ def create_app(redis_client=None):
             "hostname": socket.gethostname()
         })
 
-    # incr() atomically increments the value of the key "visits" in Redis and returns the new value, if key exists, 
+    # incr() atomically increments the value of the key "visits" in Redis
+    # and returns the new value, if key exists, 
     # otherwise it initializes the key with a value of 1 and returns 1.
     @app.get("/visits")
     def visits():
